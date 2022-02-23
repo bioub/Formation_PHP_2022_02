@@ -9,10 +9,12 @@ echo "Je m'appelle $prenom\n";
 
 $html = "<div id=\"prenom\">Je m'appelle $prenom</div>";
 
-// HEREDOC (équivalent au ")
-$html = <<<HTML
+if (true) {
+    // HEREDOC (équivalent au ")
+    $html = <<<HTML
 <div id="prenom">Je m'appelle $prenom</div>
 HTML; // fin de la str
+}
 
 // NOWDOC (équivalent au ')
 $html = <<<'HTML'

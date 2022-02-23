@@ -21,6 +21,8 @@ array_push($nbs, 8);
 $nbs[34] = 100;
 var_dump($nbs);
 
+unset($nbs[34]); // supprimer l'élément
+
 for ($i=0; $i<count($nbs); $i++) {
     var_dump($nbs[$i]);
 }
@@ -35,7 +37,7 @@ $copyNbs[0] = 1000;
 var_dump($nbs[0]); // 3
 var_dump($copyNbs[0]); // 1000
 
-$refNbs = &$nbs;
+$refNbs = &$nbs; // passage par référence
 $refNbs[0] = 1000;
 var_dump($nbs[0]); // 1000
 var_dump($refNbs[0]); // 1000
@@ -46,11 +48,30 @@ $contacts = [
     'Facebook' => 'Mark Zuckerberg',
 ];
 
+foreach ($contacts as $societe => $nom) {
+    var_dump($societe);
+    var_dump($nom);
+}
+
 if (isset($contacts['Facebook'])) {
     echo "Le contact Facebook est : $contacts[Facebook]\n";
 } else {
     echo "Pas de contact Facebook\n";
 }
 
-unset($nbs[34]); // supprimer l'élément
 unset($contacts['Facebook']); // supprimer l'élément
+
+
+$contacts = [
+    ['firstName' => 'Steve', 'lastName' => 'Jobs'],
+    ['firstName' => 'Bill', 'lastName' => 'Gates'],
+    ['firstName' => 'Mark', 'lastName' => 'Zuckerberg'],
+];
+
+function compareContact($c1, $c2) {
+    return ($c1['firstName'] < $c2['firstName']) ? -1 : 1;
+}
+
+uasort($contacts, 'compareContact');
+
+var_dump($contacts);

@@ -5,9 +5,12 @@
 
 // 1 - Créer un tableau avec 100 entiers aléatoires entre 0 et 10
 // l'afficher avec var_dump
+// ancienne syntaxe de constante
+// define('NB_ELEMENTS', 100);
+const NB_ELEMENTS = 100;
 $entierAleas = [];
 
-for ($i = 0; $i < 100; $i++) {
+for ($i = 0; $i < NB_ELEMENTS; $i++) {
     $entierAleas[] = mt_rand(0, 10);
 }
 

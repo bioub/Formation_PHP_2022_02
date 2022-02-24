@@ -8,6 +8,10 @@
     <title><?= $title ?? 'Mes Contacts' ?></title>
 </head>
 <body>
+<nav>
+    <a href="/index.php/contacts/">Contacts</a>
+    <a href="/index.php/societes/">Sociétés</a>
+</nav>
 <?= $content ?>
 </body>
 </html>

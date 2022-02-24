@@ -6,7 +6,7 @@
     <ul>
         <?php foreach ($contacts as $contact) : ?>
             <li>
-                <a href="contacts-show.php?id=<?=$contact['id']?>">
+                <a href="/index.php/contacts/show/?id=<?=$contact['id']?>">
                     <?=$contact['first_name']?> <?=$contact['last_name']?>
                 </a>
             </li>

@@ -1,5 +1,5 @@
 <?php
-require_once 'model.php';
+require_once '../model.php';
 
 // pas d'id dans l'url, on redirige
 if (!isset($_GET['id'])) {
@@ -18,4 +18,4 @@ if (!$contact) {
     exit();
 }
 
-require_once 'templates/contacts-show.php';
+require_once '../templates/contacts-show.php';

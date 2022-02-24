@@ -12,5 +12,7 @@
             </li>
         <?php endforeach; ?>
     </ul>
+
+    <a href="/index.php/contacts/add/">Ajouter un contact</a>
 <?php $content = ob_get_clean() ?>
 <?php require_once 'layout.php'; ?>

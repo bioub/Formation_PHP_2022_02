@@ -1,6 +1,4 @@
 <?php
-require_once '../model.php';
-
 // pas d'id dans l'url, on redirige
 if (!isset($_GET['id'])) {
     header('HTTP/1.1 301 Moved Permanently');

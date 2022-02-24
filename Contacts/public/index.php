@@ -14,6 +14,9 @@ switch ($_SERVER['PATH_INFO']) {
     case '/contacts/show/':
         require_once '../controllers/contacts-show.php';
         break;
+    case '/contacts/add/':
+        require_once '../controllers/contacts-add.php';
+        break;
     case '/societes/':
         require_once '../controllers/societes-list.php';
         break;

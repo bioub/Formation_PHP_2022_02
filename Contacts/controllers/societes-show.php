@@ -1,6 +1,4 @@
 <?php
-require_once '../model.php';
-
 if (!isset($_GET['id'])) {
     header('HTTP/1.1 301 Move Permanently');
     header('Location: /index.php/societes/');

@@ -1,5 +1,5 @@
 <?php
-function sum(int|float|string $a, int|float|string $b) {
+function sum(int|float|string $a, int|float|string $b): float {
     return $a + $b;
 }
 

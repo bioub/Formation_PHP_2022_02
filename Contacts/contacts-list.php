@@ -1,6 +1,6 @@
 <?php
-require 'model.php';
+require_once 'model.php';
 
 $contacts = get_all_contacts();
 
-require 'templates/contacts-list.php';
+require_once 'templates/contacts-list.php';

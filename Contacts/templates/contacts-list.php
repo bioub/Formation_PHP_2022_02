@@ -1,19 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h2>Liste de contacts</h2>
-<!-- ul>li*3>lorem2 -->
-<ul>
-    <?php foreach ($contacts as $contact) : ?>
-        <li><?=$contact['first_name']?> <?=$contact['last_name']?></li>
-    <?php endforeach; ?>
-</ul>
-</body>
-</html>
+<?php $title = 'Liste des contacts'; ?>
+<?php ob_start() ?>
+    <h2><?=$title?></h2>
+    <!-- ul>li*3>lorem2 -->
+    <ul>
+        <?php foreach ($contacts as $contact) : ?>
+            <li><?=$contact['first_name']?> <?=$contact['last_name']?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php $content = ob_get_clean() ?>
+<?php require_once 'layout.php'; ?>

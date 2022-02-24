@@ -1,3 +1,4 @@
+<?php /** @type array $contacts */ ?>
 <?php $title = 'Liste des contacts'; ?>
 <?php ob_start() ?>
     <h2><?=$title?></h2>

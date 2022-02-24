@@ -5,9 +5,9 @@
     <tbody>
         <?php foreach ($societes as $societe) : ?>
         <tr>
-            <td><?=$societe['name']?></td>
+            <td><?=htmlspecialchars($societe['name'])?></td>
             <td>
-                <a href="/index.php/societes/show/?id=<?=$societe['id']?>">Afficher</a>
+                <a href="/index.php/societes/show/?id=<?=htmlspecialchars($societe['id'])?>">Afficher</a>
             </td>
         </tr>
         <?php endforeach; ?>

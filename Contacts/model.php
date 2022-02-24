@@ -39,14 +39,23 @@ function get_contact_by_id($id)
 {
     $mysqli = open_database_connection();
 
+    // Tester avec cette URL
+    // http://contacts.localhost/index.php/contacts/show/?id=1+OR+2+ORDER+BY+id+DESC
+    // $id = "1 OR 2 ORDER BY id DESC"
+
     $sql = <<<SQL
 SELECT id, first_name, last_name, email, phone
 FROM contact
-WHERE id = $id
+WHERE id = ?
 LIMIT 0, 1
 SQL;
 
-    $result = mysqli_query($mysqli, $sql);
+    $stmt = mysqli_prepare($mysqli, $sql);
+    mysqli_stmt_bind_param($stmt, 'i', $id);
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
 
     $contact = mysqli_fetch_assoc($result);
 
@@ -80,15 +89,20 @@ function get_societe_by_id($id)
     $sql = <<<SQL
 SELECT id, name, city
 FROM societe
-WHERE id = $id
+WHERE id = ?
 LIMIT 0, 1
 SQL;
 
-    $result = mysqli_query($mysqli, $sql);
+    $stmt = mysqli_prepare($mysqli, $sql);
+    mysqli_stmt_bind_param($stmt, 'i', $id);
 
-    $contact = mysqli_fetch_assoc($result);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    $societe = mysqli_fetch_assoc($result);
 
     close_database_connection($mysqli);
 
-    return $contact;
+    return $societe;
 }

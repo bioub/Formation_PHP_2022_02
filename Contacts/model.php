@@ -64,7 +64,33 @@ SQL;
     return $contact;
 }
 
-function get_all_societes() {
+function insert_contact($contact)
+{
+    $mysqli = open_database_connection();
+
+    $sql = <<<SQL
+INSERT INTO contact (first_name, last_name, email, phone)
+VALUES (?, ?, ?, ?)
+SQL;
+
+    $stmt = mysqli_prepare($mysqli, $sql);
+    // ['first_name' => 'Mark', 'last_name' => 'Zuckerberg']
+    // ['Mark', 'Zuckerberg']
+    // 'Mark', 'Zuckerberg'
+    //mysqli_stmt_bind_param($stmt, 'ssss', ...array_values($contact));
+    mysqli_stmt_bind_param($stmt, 'ssss', $contact['first_name'], $contact['last_name'], $contact['email'], $contact['phone']);
+
+    mysqli_stmt_execute($stmt);
+
+    $id = mysqli_stmt_insert_id($stmt);
+
+    close_database_connection($mysqli);
+
+    return $id;
+}
+
+function get_all_societes()
+{
     $mysqli = open_database_connection();
 
     $sql = <<<SQL

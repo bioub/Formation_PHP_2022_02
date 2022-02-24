@@ -34,3 +34,23 @@ SQL;
 
     return $contacts;
 }
+
+function get_contact_by_id($id)
+{
+    $mysqli = open_database_connection();
+
+    $sql = <<<SQL
+SELECT id, first_name, last_name, email, phone
+FROM contact
+WHERE id = $id
+LIMIT 0, 1
+SQL;
+
+    $result = mysqli_query($mysqli, $sql);
+
+    $contact = mysqli_fetch_assoc($result);
+
+    close_database_connection($mysqli);
+
+    return $contact;
+}

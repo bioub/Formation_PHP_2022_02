@@ -4,7 +4,11 @@
     <!-- ul>li*3>lorem2 -->
     <ul>
         <?php foreach ($contacts as $contact) : ?>
-            <li><?=$contact['first_name']?> <?=$contact['last_name']?></li>
+            <li>
+                <a href="contacts-show.php?id=<?=$contact['id']?>">
+                    <?=$contact['first_name']?> <?=$contact['last_name']?>
+                </a>
+            </li>
         <?php endforeach; ?>
     </ul>
 <?php $content = ob_get_clean() ?>

@@ -14,7 +14,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         unset($_SESSION['csrf_token']);
 
-        if (move_uploaded_file($_FILES['photo']['tmp_name'], '../public/uploads/' . $_FILES['photo']['name'])) {
+        $dest = '../public/uploads/' . $_FILES['photo']['name'];
+
+        if (move_uploaded_file($_FILES['photo']['tmp_name'], $dest)) {
+            $im = imagecreatefrompng($dest);
+            $im2 = imagescale($im, 100);
+            $black = imagecolorallocate($im2, 0, 0, 0);
+
+            // On rend l'arrière-plan transparent
+            imagecolortransparent($im2, $black);
+
+            imagepng($im2, $dest);
+            imagedestroy($im2);
+            imagedestroy($im);
+
             $contact['photo'] = $_FILES['photo']['name'];
             $id = insert_contact($contact);
 

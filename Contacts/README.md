@@ -44,3 +44,10 @@ Ajouter un champ caché dans le formulaire de contact (`<input name="csrf_token"
 Au moment de traiter le contenu du POST vérifier si le token du POST et le token de la session corresponde
 
 Si oui faire l'insertion, si non afficher un message d'erreur.
+
+## Traitement d'image
+
+Dans le fichier `controllers/contact-add.php` après avoir uploadé le fichier, ouvrir le fichier image avec la fonction
+correspondant au format uploadé et redimensionner l'image
+pour qu'elle ne dépasse pas 100 pixel de large (respecter le ratio d'origine)
+

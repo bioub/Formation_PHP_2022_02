@@ -1,7 +1,9 @@
 <?php
 
-function redirectAndExit(string $url) {
-    header('HTTP/1.1 301 Moved Permanently');
+function redirectAndExit(string $url, $status = 302) {
+    if ($status === 301) {
+        header('HTTP/1.1 301 Moved Permanently');
+    }
     header('Location: ' . $url);
     exit();
 }

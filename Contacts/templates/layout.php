@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $title ?? 'Mes Contacts' ?></title>
 </head>
-<body>
+<body style="background-color: <?=$theme?>">
 <nav>
     <a href="/index.php/contacts/">Contacts</a>
     <a href="/index.php/societes/">Sociétés</a>

@@ -3,6 +3,8 @@ require_once '../config.php';
 require_once '../model.php';
 require_once '../utils.php';
 
+$theme = $_COOKIE['theme'] ?? 'white';
+
 if (!isset($_SERVER['PATH_INFO'])) {
     require_once '../controllers/home.php';
     exit();

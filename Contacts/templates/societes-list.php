@@ -13,6 +13,7 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<a href="/index.php/societes/add/">Ajouter une société</a>
 <?php $content = ob_get_clean(); ?>
 <?php require_once 'layout.php'; ?>
 

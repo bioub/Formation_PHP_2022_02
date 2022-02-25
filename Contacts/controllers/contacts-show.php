@@ -1,9 +1,7 @@
 <?php
 // pas d'id dans l'url, on redirige
 if (!isset($_GET['id'])) {
-    header('HTTP/1.1 301 Moved Permanently');
-    header('Location: /index.php/contacts/');
-    exit();
+    redirectAndExit('/index.php/contacts/');
 }
 
 $id = $_GET['id'];
@@ -11,9 +9,7 @@ $id = $_GET['id'];
 $contact = get_contact_by_id($id);
 
 if (!$contact) {
-    header('HTTP/1.1 404 Not Found');
-    require_once '../templates/404.php';
-    exit();
+    showNotFound();
 }
 
 require_once '../templates/contacts-show.php';

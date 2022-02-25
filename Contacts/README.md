@@ -25,3 +25,9 @@ En vous inspirant de contacts-add
 
 Créer un formulaire d'update pour les contacts
 En réutilisant la fonction `get_contact_by_id`
+
+## Failles
+
+- XSS
+- Injection SQL
+- CSRF

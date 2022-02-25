@@ -4,7 +4,7 @@
     <p>
         Nom : <b><?=htmlspecialchars($societe['name'])?></b>
     </p>
-    <?php if (isset($societe['city'])) : ?>
+    <?php if (!empty($societe['city'])) : ?>
         <p>
             Ville : <b><?=htmlspecialchars($societe['city'])?></b>
         </p>

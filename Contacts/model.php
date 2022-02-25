@@ -89,6 +89,48 @@ SQL;
     return $id;
 }
 
+function update_contact($contact)
+{
+    $mysqli = open_database_connection();
+
+    $sql = <<<SQL
+UPDATE contact SET first_name = ?, last_name = ?, email = ?, phone = ?
+WHERE id = ?
+SQL;
+
+    $stmt = mysqli_prepare($mysqli, $sql);
+    mysqli_stmt_bind_param($stmt, 'ssssi', $contact['first_name'], $contact['last_name'], $contact['email'], $contact['phone'], $contact['id']);
+
+    mysqli_stmt_execute($stmt);
+
+    close_database_connection($mysqli);
+}
+
+function insert_societe($societe)
+{
+    $mysqli = open_database_connection();
+
+    $sql = <<<SQL
+INSERT INTO societe (name, city)
+VALUES (?, ?)
+SQL;
+
+    $stmt = mysqli_prepare($mysqli, $sql);
+    // ['first_name' => 'Mark', 'last_name' => 'Zuckerberg']
+    // ['Mark', 'Zuckerberg']
+    // 'Mark', 'Zuckerberg'
+    //mysqli_stmt_bind_param($stmt, 'ssss', ...array_values($contact));
+    mysqli_stmt_bind_param($stmt, 'ss', $societe['name'], $societe['city']);
+
+    mysqli_stmt_execute($stmt);
+
+    $id = mysqli_stmt_insert_id($stmt);
+
+    close_database_connection($mysqli);
+
+    return $id;
+}
+
 function get_all_societes()
 {
     $mysqli = open_database_connection();

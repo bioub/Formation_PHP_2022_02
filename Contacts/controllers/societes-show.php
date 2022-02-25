@@ -1,8 +1,6 @@
 <?php
 if (!isset($_GET['id'])) {
-    header('HTTP/1.1 301 Move Permanently');
-    header('Location: /index.php/societes/');
-    exit();
+    redirectAndExit('/index.php/societes/');
 }
 
 $id = $_GET['id'];
@@ -10,9 +8,7 @@ $id = $_GET['id'];
 $societe = get_societe_by_id($id);
 
 if (!$societe) {
-    header('HTTP/1.1 404 Move Permanently');
-    require_once '../templates/404.php';
-    exit();
+    showNotFound();
 }
 
 require_once '../templates/societes-show.php';

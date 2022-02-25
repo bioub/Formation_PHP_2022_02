@@ -31,3 +31,16 @@ En réutilisant la fonction `get_contact_by_id`
 - XSS
 - Injection SQL
 - CSRF
+
+
+## Session
+
+Sur la page `contacts-add.php`, générer un identifiant unique avec la fonction `uniqid`
+
+Stocker cette valeur en session à la clé `csrf_token`
+
+Ajouter un champ caché dans le formulaire de contact (`<input name="csrf_token" type="hidden" value="VOTRE_TOKEN" />`)
+
+Au moment de traiter le contenu du POST vérifier si le token du POST et le token de la session corresponde
+
+Si oui faire l'insertion, si non afficher un message d'erreur.

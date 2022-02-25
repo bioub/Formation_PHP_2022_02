@@ -44,7 +44,7 @@ function get_contact_by_id($id)
     // $id = "1 OR 2 ORDER BY id DESC"
 
     $sql = <<<SQL
-SELECT id, first_name, last_name, email, phone
+SELECT id, first_name, last_name, email, phone, photo
 FROM contact
 WHERE id = ?
 LIMIT 0, 1
@@ -69,8 +69,8 @@ function insert_contact($contact)
     $mysqli = open_database_connection();
 
     $sql = <<<SQL
-INSERT INTO contact (first_name, last_name, email, phone)
-VALUES (?, ?, ?, ?)
+INSERT INTO contact (first_name, last_name, email, phone, photo)
+VALUES (?, ?, ?, ?, ?)
 SQL;
 
     $stmt = mysqli_prepare($mysqli, $sql);
@@ -78,7 +78,7 @@ SQL;
     // ['Mark', 'Zuckerberg']
     // 'Mark', 'Zuckerberg'
     //mysqli_stmt_bind_param($stmt, 'ssss', ...array_values($contact));
-    mysqli_stmt_bind_param($stmt, 'ssss', $contact['first_name'], $contact['last_name'], $contact['email'], $contact['phone']);
+    mysqli_stmt_bind_param($stmt, 'sssss', $contact['first_name'], $contact['last_name'], $contact['email'], $contact['phone'], $contact['photo']);
 
     mysqli_stmt_execute($stmt);
 

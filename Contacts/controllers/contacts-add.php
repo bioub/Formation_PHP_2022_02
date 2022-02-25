@@ -9,9 +9,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'phone' => FILTER_DEFAULT,
     ]);
 
-    $id = insert_contact($contact);
+    if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $error = 'Le token n\'est pas valide';
+    } else {
+        unset($_SESSION['csrf_token']);
 
-    redirectAndExit('/index.php/contacts/show/?id='.$id);
+        if (move_uploaded_file($_FILES['photo']['tmp_name'], '../public/uploads/' . $_FILES['photo']['name'])) {
+            $contact['photo'] = $_FILES['photo']['name'];
+            $id = insert_contact($contact);
+
+            redirectAndExit('/index.php/contacts/show/?id=' . $id);
+        } else {
+            $error = 'Le fichier n\'est pas valide';
+        }
+
+    }
 }
+
+$_SESSION['csrf_token'] = uniqid();
 
 require_once '../templates/contacts-add.php';
